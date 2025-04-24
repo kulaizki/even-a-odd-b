@@ -17,13 +17,13 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - name: "drow-reverser"
+          - name: "even-a-odd-b"
             platform: "linux/amd64"
             os: "ubuntu-latest"
-          - name: "drow-reverser"
+          - name: "even-a-odd-b"
             platform: "windows/amd64"
             os: "windows-latest"
-          - name: "drow-reverser"
+          - name: "even-a-odd-b"
             platform: "darwin/universal"
             os: "macos-latest"
 

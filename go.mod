@@ -1,4 +1,4 @@
-module drow-reverser
+module even-a-odd-b
 
 go 1.23
 
