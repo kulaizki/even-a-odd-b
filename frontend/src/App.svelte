@@ -1,48 +1,50 @@
 <script lang="ts">
   let inputText: string = "";
-  let resultText: string = "Enter text above and click 'Reverse Words' to see the result";
+  let resultText: string = "Enter text above and click 'Check String' to see if it contains even number of 'a's and odd number of 'b's";
 
-  function reverseWords(): void {
+  function checkString(): void {
     if (!inputText) {
       resultText = "Please enter some text first";
       return;
     }
 
-    const lines = inputText.split('\n');
-    
-    const processedLines = lines.map(line => {
-      const words = line.split(' ');
-      const reversedWords = words.map(word => {
-        return word.split('').reverse().join('');
-      });
-      return reversedWords.join(' ');
-    });
+    const aCount = (inputText.match(/a/gi) || []).length;
+    const bCount = (inputText.match(/b/gi) || []).length;
 
-    resultText = processedLines.join('\n');
+    const isAEven = aCount % 2 === 0;
+    const isBOdd = bCount % 2 !== 0;
+
+    if (isAEven && isBOdd) {
+      resultText = "YES";
+    } else {
+      resultText = "NO";
+    }
+    
+    resultText += `\n\nCounts:\na: ${aCount} (${isAEven ? 'even' : 'odd'})\nb: ${bCount} (${isBOdd ? 'odd' : 'even'})`;
   }
 </script>
 
 <main>
   <div class="container">
     <div class="app-header">
-      <h1>Word Reverser</h1>
-      <p class="subtitle">Reverse the letters in each word while maintaining word order</p>
+      <h1>Even a's, Odd b's Checker</h1>
+      <p class="subtitle">Checks if a string contains an even number of 'a's and an odd number of 'b's</p>
     </div>
     
     <div class="card">
       <div class="input-section">
-        <label for="input-text">Input Text</label>
+        <label for="input-text">Input String</label>
         <textarea 
           id="input-text"
           bind:value={inputText} 
-          placeholder="Type your text here..."
+          placeholder="Type your text here (e.g., 'aabbb')..."
           rows="4"
         ></textarea>
       </div>
       
-      <button class="hover:cursor-pointer reverse-btn" on:click={reverseWords}>
-        <span>Reverse Words</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3L21 7L17 11"></path><path d="M21 7H13C10.2386 7 8 9.23858 8 12V12C8 14.7614 5.76142 17 3 17H3"></path></svg>
+      <button class="hover:cursor-pointer check-btn" on:click={checkString}>
+        <span>Check String</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
       </button>
       
       <div class="result-section">
@@ -162,7 +164,7 @@
     color: rgba(255, 255, 255, 0.5);
   }
 
-  .reverse-btn {
+  .check-btn {
     background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
     color: #1a1a2e;
     border: none;
@@ -181,12 +183,12 @@
     align-self: center;
   }
 
-  .reverse-btn:hover {
+  .check-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
   }
 
-  .reverse-btn:active {
+  .check-btn:active {
     transform: translateY(0);
   }
 
