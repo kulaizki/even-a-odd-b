@@ -1,25 +1,26 @@
-# Word Reverser
+# Even a's and Odd b's Checker
 
-> An app for reversing the letters in each word while maintaining word order.
-
-https://github.com/user-attachments/assets/eac44f16-8da5-4859-8733-efddfbeca1f8
+> An app for checking if a string contains an even number of 'a's and an odd number of 'b's.
 
 ## Features
 
-- Reverses each word in a text string letter by letter while keeping word order intact
+- Checks if a given string contains an even number of 'a's and an odd number of 'b's
+- Displays detailed count information for both characters
 - Clean, modern UI with responsive design
-- Real-time text transformation
 - Beautiful gradient styling with smooth animations
 
 ## How to Use
 
-1. Enter your text in the input field
-2. Click the "Reverse Words" button
-3. See the reversed text in the result box below
+1. Enter your string in the input field
+2. Click the "Check String" button
+3. See the result (YES/NO) in the box below with character counts
 
 For example:
-- Input: `Hello world`
-- Output: `olleH dlrow`
+- Input: `aabbb`
+- Output: `YES` (2 'a's - even, 3 'b's - odd)
+
+- Input: `aaabb`
+- Output: `NO` (3 'a's - odd, 2 'b's - even)
 
 ## Tech Stack
 
